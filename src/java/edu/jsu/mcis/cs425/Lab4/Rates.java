@@ -117,11 +117,22 @@ public class Rates {
              * *** INSERT YOUR CODE HERE ***
              */
             
+            if(iterator.hasNext()){
+                iterator.next();
+            }
+            while(iterator.hasNext()){
+                row = iterator.next();
+                rates.put(row[1],Double.parseDouble(row[2]));
+            }
+            
             json.put("rates", rates);
+            json.put("base", "USD");
+            json.put("date", "2019-09-20");
             
             /* Parse top-level container to a JSON string */
             
             results = JSONValue.toJSONString(json);
+            System.err.println(results);
             
         }
         catch (Exception e) { System.err.println( e.toString() ); }
